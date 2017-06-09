@@ -19,7 +19,7 @@ ba = H5SectionsArray("path/of/dataset/")
 a = ba[101:300, -99:100, 1:3]
 ```
 
-# section file format
+# File format
 The section format follows the convention of [ImageRegistration.jl](https://github.com/seung-lab/ImageRegistration.jl)
 
 ## a registry file 
