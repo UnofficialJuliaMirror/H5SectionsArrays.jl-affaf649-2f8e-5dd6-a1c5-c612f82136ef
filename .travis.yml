@@ -10,4 +10,4 @@ git:
   depth: 999999
 
 script:
-    - julia -e 'Pkg.clone(pwd()); Pkg.test("BOSSArrays")'
+    - julia -e 'Pkg.clone(pwd()); Pkg.test("H5SectionsArrays")'
