@@ -6,6 +6,7 @@ cutout arbitrary chunks from a serials of 2D image sections in hdf5 format
 - only support cutout, no writting
 - used as normal Julia array
 - support negative coordinate
+
 Note that we only support UInt8 data type for now, should be easy to extend if neccesary.
 
 # Installation
