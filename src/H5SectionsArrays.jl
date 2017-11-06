@@ -10,11 +10,11 @@ const DATASET_NDIMS = 3
 export H5SectionsArray, boundingbox, get_section_filename
 
 # register item of one section / hdf5 file
-typealias Tsecreg Dict{Symbol, Union{AbstractString, Int}}
+const Tsecreg = Dict{Symbol, Union{AbstractString, Int}}
 # the whole register records filename, xstart, ystart, xdim, ydim
-typealias Tregister Dict{Int, Tsecreg}
+const Tregister = Dict{Int, Tsecreg}
 
-type H5SectionsArray{T, N} <: AbstractArray 
+mutable struct H5SectionsArray{T, N} <: AbstractArray 
     register::Tregister
     function (::Type{H5SectionsArray})( register::Tregister )
         new{UInt8, 3}(register)
@@ -74,7 +74,7 @@ end
 """
 specialized for UInt8 raw image data type
 """
-function Base.eltype{T,N}(A::H5SectionsArray{T,N})
+function Base.eltype(A::H5SectionsArray{T,N}) where {T,N}
     return T
     # return H5_DATASET_ELEMENT_TYPE
     # for key in keys(A.register)
