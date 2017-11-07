@@ -14,7 +14,7 @@ const Tsecreg = Dict{Symbol, Union{AbstractString, Int}}
 # the whole register records filename, xstart, ystart, xdim, ydim
 const Tregister = Dict{Int, Tsecreg}
 
-mutable struct H5SectionsArray{T, N} <: AbstractArray 
+mutable struct H5SectionsArray{T, N} <: AbstractArray{T,N} 
     register::Tregister
     function (::Type{H5SectionsArray})( register::Tregister )
         new{UInt8, 3}(register)

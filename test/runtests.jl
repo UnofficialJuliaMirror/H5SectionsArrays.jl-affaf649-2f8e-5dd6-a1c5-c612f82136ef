@@ -1,5 +1,6 @@
 using H5SectionsArrays
 using HDF5
+using Base.Test
 
 a = rand(UInt8, 200,200,3)
 
@@ -18,11 +19,14 @@ open(joinpath(tempDir, "registry.txt"), "w") do f_registry
     end 
 end 
 
-# cutout the chunk
-ba = H5SectionsArray(tempDir)
-b = ba[101:300, -99:100, 1:3]
+@testset "test cutout" begin 
+    # cutout the chunk
+    ba = H5SectionsArray(tempDir)
+    b = ba[101:300, -99:100, 1:3]
 
-@assert all(a.==b)
+    @test all(a.==b)
 
-# clean it up
-rm(tempDir; recursive=true)
+    # clean it up
+    rm(tempDir; recursive=true)
+
+end 
